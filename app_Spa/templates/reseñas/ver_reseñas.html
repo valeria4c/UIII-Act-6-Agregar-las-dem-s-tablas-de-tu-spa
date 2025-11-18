@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Ver Reseñas{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Lista de Reseñas</h2>
+<div class="text-end mb-3">
+    <a href="{% url 'agregar_reseña' %}" class="btn btn-primary">
+        <i class="fas fa-plus-circle"></i> Agregar Nueva Reseña
+    </a>
+</div>
+
+{% if reseñas %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Servicio</th>
+                <th scope="col">Calificación</th>
+                <th scope="col">Comentario</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Aprobada</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reseña in reseñas %}
+            <tr>
+                <td>{{ reseña.id_reseña }}</td>
+                <td>{{ reseña.usuario.nombre }}</td>
+                <td>{{ reseña.producto.nombre }}</td>
+                <td>{{ reseña.servicio.nombre_servicio|default:"N/A" }}</td>
+                <td>{{ reseña.calificacion }}⭐</td>
+                <td>{{ reseña.comentario|truncatechars:50 }}</td>
+                <td>{{ reseña.fecha_reseña|date:"d M Y" }}</td>
+                <td>
+                    {% if reseña.aprobada %}
+                        <span class="badge bg-success">Sí</span>
+                    {% else %}
+                        <span class="badge bg-danger">No</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Acciones de reseña">
+                        <a href="{% url 'actualizar_reseña' reseña.id_reseña %}" class="btn btn-sm btn-info text-white me-1" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'borrar_reseña' reseña.id_reseña %}" class="btn btn-sm btn-danger" title="Eliminar">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info text-center" role="alert">
+    No hay reseñas registradas.
+</div>
+{% endif %}
+{% endblock %}

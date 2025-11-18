@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Agregar Usuario{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Agregar Nuevo Usuario</h2>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 600px;">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" required>
+        </div>
+        <div class="mb-3">
+            <label for="correo" class="form-label">Correo Electrónico:</label>
+            <input type="email" class="form-control" id="correo" name="correo" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="text" class="form-control" id="telefono" name="telefono">
+        </div>
+        <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección:</label>
+            <input type="text" class="form-control" id="direccion" name="direccion">
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+            <a href="{% url 'ver_usuarios' %}" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Agregar Reseña{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Agregar Nueva Reseña</h2>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 600px;">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario:</label>
+            <select class="form-select" id="usuario" name="usuario" required>
+                <option value="">Selecciona un usuario</option>
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id_usuario }}">{{ usuario.nombre }} {{ usuario.apellido }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="producto" class="form-label">Producto:</label>
+            <select class="form-select" id="producto" name="producto" required>
+                <option value="">Selecciona un producto</option>
+                {% for producto in productos %}
+                    <option value="{{ producto.id_producto }}">{{ producto.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="servicio" class="form-label">Servicio (Opcional):</label>
+            <select class="form-select" id="servicio" name="servicio">
+                <option value="">Ningún Servicio</option>
+                {% for servicio in servicios %}
+                    <option value="{{ servicio.id_servicio }}">{{ servicio.nombre_servicio }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="calificacion" class="form-label">Calificación (1-5):</label>
+            <input type="number" class="form-control" id="calificacion" name="calificacion" min="1" max="5" value="5" required>
+        </div>
+        <div class="mb-3">
+            <label for="comentario" class="form-label">Comentario:</label>
+            <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+        </div>
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="aprobada" name="aprobada" checked>
+            <label class="form-check-label" for="aprobada">Aprobada</label>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Agregar Reseña</button>
+            <a href="{% url 'ver_reseñas' %}" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

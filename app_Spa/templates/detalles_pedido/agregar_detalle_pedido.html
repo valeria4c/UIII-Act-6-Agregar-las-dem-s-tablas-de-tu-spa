@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Agregar Detalle de Pedido{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Agregar Nuevo Detalle de Pedido</h2>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 600px;">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="pedido" class="form-label">Pedido:</label>
+            <select class="form-select" id="pedido" name="pedido" required>
+                <option value="">Selecciona un pedido</option>
+                {% for pedido in pedidos %}
+                    <option value="{{ pedido.id_pedido }}">Pedido #{{ pedido.id_pedido }} (Usuario: {{ pedido.usuario.nombre }} {{ pedido.usuario.apellido }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="producto" class="form-label">Producto:</label>
+            <select class="form-select" id="producto" name="producto" required>
+                <option value="">Selecciona un producto</option>
+                {% for producto in productos %}
+                    <option value="{{ producto.id_producto }}">{{ producto.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="cantidad" class="form-label">Cantidad:</label>
+                <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="precio_unitario" class="form-label">Precio Unitario:</label>
+                <input type="number" step="0.01" class="form-control" id="precio_unitario" name="precio_unitario" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="notas_item" class="form-label">Notas (Opcional):</label>
+            <input type="text" class="form-control" id="notas_item" name="notas_item">
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Agregar Detalle de Pedido</button>
+            <a href="{% url 'ver_detalles_pedido' %}" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Ver Detalles de Servicio{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Lista de Detalles de Servicio</h2>
+<div class="text-end mb-3">
+    <a href="{% url 'agregar_detalle_servicio' %}" class="btn btn-primary">
+        <i class="fas fa-plus-circle"></i> Agregar Nuevo Detalle de Servicio
+    </a>
+</div>
+
+{% if detalles_servicio %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID Detalle</th>
+                <th scope="col">Servicio</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad Usada</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detalle in detalles_servicio %}
+            <tr>
+                <td>{{ detalle.id_detalle_servicio }}</td>
+                <td>{{ detalle.servicio.nombre_servicio }}</td>
+                <td>{{ detalle.producto.nombre }}</td>
+                <td>{{ detalle.cantidad_usada }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Acciones de detalle de servicio">
+                        <a href="{% url 'actualizar_detalle_servicio' detalle.id_detalle_servicio %}" class="btn btn-sm btn-info text-white me-1" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'borrar_detalle_servicio' detalle.id_detalle_servicio %}" class="btn btn-sm btn-danger" title="Eliminar">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info text-center" role="alert">
+    No hay detalles de servicio registrados.
+</div>
+{% endif %}
+{% endblock %}

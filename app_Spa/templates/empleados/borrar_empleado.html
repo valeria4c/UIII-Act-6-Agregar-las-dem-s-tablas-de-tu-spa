@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Borrar Empleado{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #dc3545;">Confirmar Eliminación de Empleado</h2>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 500px;">
+    <div class="alert alert-warning text-center" role="alert">
+        ¿Estás seguro de que deseas eliminar al empleado **{{ empleado.nombre }} {{ empleado.apellido }} (ID: {{ empleado.id_empleado }})**?
+        Esta acción es irreversible y podría afectar a los servicios asignados.
+    </div>
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger me-2"><i class="fas fa-trash-alt"></i> Sí, Eliminar</button>
+        <a href="{% url 'ver_empleados' %}" class="btn btn-secondary"><i class="fas fa-times-circle"></i> Cancelar</a>
+    </form>
+</div>
+{% endblock %}

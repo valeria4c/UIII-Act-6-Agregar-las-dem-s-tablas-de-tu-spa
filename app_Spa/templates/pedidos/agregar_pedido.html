@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Agregar Pedido{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Agregar Nuevo Pedido</h2>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 600px;">
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario:</label>
+            <select class="form-select" id="usuario" name="usuario" required>
+                <option value="">Selecciona un usuario</option>
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id_usuario }}">{{ usuario.nombre }} {{ usuario.apellido }} ({{ usuario.correo }})</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="estado_pedido" class="form-label">Estado del Pedido:</label>
+            <input type="text" class="form-control" id="estado_pedido" name="estado_pedido" required>
+        </div>
+
+        <!-- NUEVO CAMPO: Selección de Producto -->
+        <div class="mb-3">
+            <label for="producto" class="form-label">Producto:</label>
+            <select class="form-select" id="producto" name="producto" required>
+                <option value="">Selecciona un producto</option>
+                {% for producto in productos %}
+                    <option value="{{ producto.id_producto }}">{{ producto.nombre }} - ${{ producto.precio }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- NUEVO CAMPO: Cantidad -->
+        <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad:</label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" required>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Agregar Pedido</button>
+            <a href="{% url 'ver_pedidos' %}" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

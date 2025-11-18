@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Ver Empleados{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Lista de Empleados</h2>
+
+<div class="text-end mb-3">
+    <a href="{% url 'agregar_empleado' %}" class="btn btn-primary">
+        <i class="fas fa-plus-circle"></i> Agregar Nuevo Empleado
+    </a>
+</div>
+
+{% if empleados %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Fecha Contratación</th>
+                <th>Salario</th>
+                <th>Horario</th>
+                <th>Puesto</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for empleado in empleados %}
+            <tr>
+                <td>{{ empleado.id_empleado }}</td>
+
+
+
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.apellido }}</td>
+                <td>{{ empleado.correo }}</td>
+                <td>{{ empleado.telefono }}</td>
+                <td>{{ empleado.direccion }}</td>
+                <td>{{ empleado.fecha_contratacion }}</td>
+                <td>${{ empleado.salario }}</td>
+                <td>{{ empleado.horario }}</td>
+                <td>{{ empleado.puesto }}</td>
+                <td>{{ empleado.activo|yesno:"Sí,No" }}</td>
+
+                <td>
+                    <div class="btn-group" role="group">
+                        <a href="{% url 'actualizar_empleado' empleado.id_empleado %}" class="btn btn-sm btn-info text-white">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <a href="{% url 'borrar_empleado' empleado.id_empleado %}" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info text-center">
+    No hay empleados registrados.
+</div>
+{% endif %}
+
+{% endblock %}

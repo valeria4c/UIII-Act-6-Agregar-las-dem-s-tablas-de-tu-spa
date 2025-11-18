@@ -1,0 +1,36 @@
+<!-- app_Spa/templates/inicio.html -->
+{% extends 'base.html' %}
+
+{% block titulo %}Inicio - Spa{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold" style="color: #6a9acb;">Bienvenido al Sistema de Administración de Spa</h1>
+        <p class="col-md-8 fs-4 mx-auto" style="color: #4a4a4a;">
+            Gestiona de forma eficiente usuarios, empleados, productos, servicios, pedidos, reseñas y mucho más.
+            Tu solución integral para la administración de un Spa moderno.
+        </p>
+        <hr class="my-4">
+        <p class="fs-5" style="color: #5a5a5a;">
+            Explora todas las funcionalidades a través de nuestro menú de navegación.
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow-sm mb-4">
+            <img src="https://i.pinimg.com/736x/56/db/34/56db344d17c001bdf7277cee6c8076da.jpg" class="card-img-top" alt="Imagen de Spa" style="object-fit: cover; height: 300px;">
+            <div class="card-body text-center">
+                <h5 class="card-title" style="color: #6a9acb;">Relájate y Disfruta</h5>
+                <p class="card-text" style="color: #5a5a5a;">
+                    Un espacio dedicado al bienestar y la tranquilidad.
+                    Aquí podrás administrar todo lo necesario para ofrecer la mejor experiencia a tus clientes.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Agregar Detalle de Servicio{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #6a9acb;">Agregar Nuevo Detalle de Servicio</h2>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 600px;">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="servicio" class="form-label">Servicio:</label>
+            <select class="form-select" id="servicio" name="servicio" required>
+                <option value="">Selecciona un servicio</option>
+                {% for servicio in servicios %}
+                    <option value="{{ servicio.id_servicio }}">{{ servicio.nombre_servicio }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="producto" class="form-label">Producto Utilizado:</label>
+            <select class="form-select" id="producto" name="producto" required>
+                <option value="">Selecciona un producto</option>
+                {% for producto in productos %}
+                    <option value="{{ producto.id_producto }}">{{ producto.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="cantidad_usada" class="form-label">Cantidad Usada:</label>
+            <input type="number" class="form-control" id="cantidad_usada" name="cantidad_usada" value="1" required>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Agregar Detalle de Servicio</button>
+            <a href="{% url 'ver_detalles_servicio' %}" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

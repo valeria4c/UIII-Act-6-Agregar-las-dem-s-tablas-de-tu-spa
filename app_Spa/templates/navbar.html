@@ -1,0 +1,121 @@
+<!-- app_Spa/templates/navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'inicio_spa' %}">
+            <i class="fas fa-spa"></i> Sistema de Administración Spa
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'inicio_spa' %}">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
+                </li>
+
+                <!-- Submenu Usuarios -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarUsuariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-users"></i> Usuarios
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarUsuariosDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_usuario' %}">Agregar Usuario</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_usuarios' %}">Ver Usuarios</a></li>
+                        <!-- Los enlaces de actualizar/borrar se manejarán desde la vista de 'ver_usuarios' -->
+                    </ul>
+                </li>
+
+                <!-- Submenu Categorias -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarCategoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-tags"></i> Categorías
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarCategoriasDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_categoria' %}">Agregar Categoría</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_categorias' %}">Ver Categorías</a></li>
+                    </ul>
+                </li>
+
+                <!-- Submenu Empleados -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarEmpleadosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-tie"></i> Empleados
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarEmpleadosDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_empleado' %}">Agregar Empleado</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_empleados' %}">Ver Empleados</a></li>
+                    </ul>
+                </li>
+
+                <!-- Submenu Productos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarProductosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-box"></i> Productos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarProductosDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_productos' %}">Ver Productos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Submenu Servicios -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarServiciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-hand-sparkles"></i> Servicios
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarServiciosDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_servicio' %}">Agregar Servicio</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_servicios' %}">Ver Servicios</a></li>
+                    </ul>
+                </li>
+
+                <!-- Submenu Pedidos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarPedidosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-shopping-cart"></i> Pedidos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarPedidosDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_pedido' %}">Agregar Pedido</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_pedidos' %}">Ver Pedidos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Submenu Detalles de Pedido -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDetallesPedidoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-receipt"></i> Detalles Pedido
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDetallesPedidoDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_detalle_pedido' %}">Agregar Detalle</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_detalles_pedido' %}">Ver Detalles</a></li>
+                    </ul>
+                </li>
+
+                <!-- Submenu Reseñas -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarReseñasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-star"></i> Reseñas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarReseñasDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_reseña' %}">Agregar Reseña</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_reseñas' %}">Ver Reseñas</a></li>
+                    </ul>
+                </li>
+
+                <!-- Submenu Detalles de Servicio -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDetallesServicioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-info-circle"></i> Detalles Servicio
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDetallesServicioDropdown">
+                        <li><a class="dropdown-item" href="{% url 'agregar_detalle_servicio' %}">Agregar Detalle</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_detalles_servicio' %}">Ver Detalles</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

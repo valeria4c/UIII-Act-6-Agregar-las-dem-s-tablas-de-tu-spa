@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Borrar Servicio{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center" style="color: #dc3545;">Confirmar Eliminación de Servicio</h2>
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 500px;">
+    <div class="alert alert-warning text-center" role="alert">
+        ¿Estás seguro de que deseas eliminar el servicio **{{ servicio.nombre_servicio }} (ID: {{ servicio.id_servicio }})**?
+        Esta acción es irreversible y podría afectar a los pedidos y reseñas asociados.
+    </div>
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger me-2"><i class="fas fa-trash-alt"></i> Sí, Eliminar</button>
+        <a href="{% url 'ver_servicios' %}" class="btn btn-secondary"><i class="fas fa-times-circle"></i> Cancelar</a>
+    </form>
+</div>
+{% endblock %}
